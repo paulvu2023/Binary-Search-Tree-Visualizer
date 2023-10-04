@@ -10,10 +10,13 @@ class Tree {
   constructor(array) {
     array = this.removeDuplicates(array);
     array.sort((a, b) => a - b);
-    this.root = buildTree(array, true);
+    this.root = this.buildTree(array, true);
   }
 
   buildTree(array, isInitialCall = false) {
+    if (array.length <= 0) {
+      return null;
+    }
     let midIndex = 0;
     if (array.length % 2 === 0) {
       midIndex = array.length / 2; // midIndex will be the the left-middle index
@@ -21,8 +24,8 @@ class Tree {
       midIndex = parseInt(array.length / 2);
     }
     const mid = new Node(array[midIndex]);
-    mid.leftNode = buildTree(array.slice(0, midIndex));
-    mid.rightNode = buildTree(array.slice(midIndex + 1, array.length));
+    mid.leftNode = this.buildTree(array.slice(0, midIndex));
+    mid.rightNode = this.buildTree(array.slice(midIndex + 1, array.length));
     if (isInitialCall) {
       return mid;
     }
@@ -45,3 +48,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
+
+const tree = new Tree([5, 4, 3, 2, 1]);
