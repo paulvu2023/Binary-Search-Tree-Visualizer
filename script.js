@@ -9,6 +9,7 @@ class Node {
 class Tree {
   constructor(array) {
     array = this.removeDuplicates(array);
+    array.sort((a, b) => a - b);
     this.root = buildTree(array);
   }
 
