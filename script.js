@@ -8,6 +8,7 @@ class Node {
 
 class Tree {
   constructor(array) {
+    array = this.removeDuplicates(array);
     this.root = buildTree(array);
   }
 
