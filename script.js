@@ -1,8 +1,8 @@
 class Node {
-  constructor(value = null, leftNode = null, rightNode = null) {
-    this.value = value;
-    this.leftNode = leftNode;
-    this.rightNode = rightNode;
+  constructor(data = null, left = null, right = null) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
   }
 }
 
@@ -25,8 +25,8 @@ class Tree {
       midIndex = parseInt(array.length / 2);
     }
     const mid = new Node(array[midIndex]);
-    mid.leftNode = this.buildTree(array.slice(0, midIndex));
-    mid.rightNode = this.buildTree(array.slice(midIndex + 1, array.length));
+    mid.left = this.buildTree(array.slice(0, midIndex));
+    mid.right = this.buildTree(array.slice(midIndex + 1, array.length));
     if (isInitialCall) {
       return mid;
     }
