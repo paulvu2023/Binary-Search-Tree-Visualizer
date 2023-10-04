@@ -10,4 +10,8 @@ class Tree {
   constructor(array) {
     this.root = buildTree(array);
   }
+
+  removeDuplicates(array) {
+    return Array.from(new Set(array));
+  }
 }
