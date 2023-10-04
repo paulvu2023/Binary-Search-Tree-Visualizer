@@ -11,6 +11,7 @@ class Tree {
     array = this.removeDuplicates(array);
     array.sort((a, b) => a - b);
     this.root = this.buildTree(array, true);
+    prettyPrint(this.root);
   }
 
   buildTree(array, isInitialCall = false) {
@@ -40,12 +41,12 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
   }
-  if (node.right !== null) {
-    prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+  if (node.rightNode) {
+    prettyPrint(node.rightNode, `${prefix}${isLeft ? "│   " : "    "}`, false);
   }
-  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
-  if (node.left !== null) {
-    prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.value}`);
+  if (node.leftNodel) {
+    prettyPrint(node.leftNode, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
 
