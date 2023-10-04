@@ -10,10 +10,10 @@ class Tree {
   constructor(array) {
     array = this.removeDuplicates(array);
     array.sort((a, b) => a - b);
-    this.root = buildTree(array);
+    this.root = buildTree(array, true);
   }
 
-  buildTree(array) {
+  buildTree(array, isInitialCall = false) {
     let midIndex = 0;
     if (array.length % 2 === 0) {
       midIndex = array.length / 2; // midIndex will be the the left-middle index
@@ -23,6 +23,9 @@ class Tree {
     const mid = new Node(array[midIndex]);
     mid.leftNode = buildTree(array.slice(0, midIndex));
     mid.rightNode = buildTree(array.slice(midIndex + 1, array.length));
+    if (isInitialCall) {
+      return mid;
+    }
   }
 
   removeDuplicates(array) {
