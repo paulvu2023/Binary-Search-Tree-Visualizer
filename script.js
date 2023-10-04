@@ -45,7 +45,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     prettyPrint(node.rightNode, `${prefix}${isLeft ? "│   " : "    "}`, false);
   }
   console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.value}`);
-  if (node.leftNodel) {
+  if (node.leftNode) {
     prettyPrint(node.leftNode, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
