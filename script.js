@@ -45,7 +45,7 @@ class Tree {
 
   delete(data, node = this.root) {
     if (node === null) {
-      return;
+      return new Node(data);
     }
 
     if (data < node.data) {
@@ -55,6 +55,7 @@ class Tree {
       }
     } else if (data > node.data) {
       node.right = this.delete(data, node.right);
+
       if (node.right.data == data) {
         node.right = null;
       }
@@ -71,17 +72,15 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
   }
-  if (node.right !== null) {
+  if (node.right) {
     prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
   }
   console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
-  if (node.left !== null) {
+  if (node.left) {
     prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-tree.insert(0);
-prettyPrint(tree.root);
-tree.delete(9);
+tree.delete(0);
 prettyPrint(tree.root);
