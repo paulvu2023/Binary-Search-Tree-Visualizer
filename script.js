@@ -43,6 +43,25 @@ class Tree {
     return node;
   }
 
+  delete(data, node = this.root) {
+    if (node === null) {
+      return;
+    }
+
+    if (data < node.data) {
+      node.left = this.delete(data, node.left);
+      if (node.left.data == data) {
+        node.left = null;
+      }
+    } else if (data > node.data) {
+      node.right = this.delete(data, node.right);
+      if (node.right.data == data) {
+        node.right = null;
+      }
+    }
+    return node;
+  }
+
   removeDuplicates(array) {
     return Array.from(new Set(array));
   }
@@ -62,5 +81,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-tree.insert(10);
+tree.insert(0);
+prettyPrint(tree.root);
+tree.delete(9);
 prettyPrint(tree.root);
