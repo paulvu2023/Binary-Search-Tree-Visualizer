@@ -30,15 +30,15 @@ class Tree {
     return mid;
   }
 
-  insert(node, data) {
+  insert(data, node = this.root) {
     if (node === null) {
       return new Node(data);
     }
 
     if (data < node.data) {
-      node.left = this.insert(node.left, data);
+      node.left = this.insert(data, node.left);
     } else if (data > node.data) {
-      node.right = this.insert(node.right, data);
+      node.right = this.insert(data, node.right);
     }
     return node;
   }
