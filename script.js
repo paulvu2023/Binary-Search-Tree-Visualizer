@@ -30,6 +30,19 @@ class Tree {
     return mid;
   }
 
+  insert(node, data) {
+    if (node === null) {
+      return new Node(data);
+    }
+
+    if (data < node.data) {
+      node.left = this.insert(node.left, data);
+    } else if (data > node.data) {
+      node.right = this.insert(node.right, data);
+    }
+    return node;
+  }
+
   removeDuplicates(array) {
     return Array.from(new Set(array));
   }
@@ -49,3 +62,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+tree.insert(10);
+prettyPrint(tree.root);
