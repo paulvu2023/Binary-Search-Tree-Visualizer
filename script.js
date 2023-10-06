@@ -50,7 +50,11 @@ class Tree {
 
     if (data < node.data) {
       node.left = this.delete(data, node.left);
-      if (node.left.data == data) {
+      if (node.left.data == data && this.hasOneChild(node.left)) {
+        const tmpNode = node.left;
+        this.hasOneChild(node.left) = tmpNode;
+        node.left = null;
+      } else if (node.left.data == data) {
         node.left = null;
       }
     } else if (data > node.data) {
@@ -61,6 +65,24 @@ class Tree {
       }
     }
     return node;
+  }
+
+  hasOneChild(node) {
+    // Returns 1 child if node ONLY has 1 child
+    let leftNode = false;
+    let rightNode = false;
+    if (node.left) {
+      leftNode = true;
+    }
+    if (node.right) {
+      rightNode = true;
+    }
+    if (leftNode == true && rightNode == false) {
+      return node.left;
+    } else if (rightNode == true && leftNode == false) {
+      return node.right;
+    }
+    return false;
   }
 
   removeDuplicates(array) {
@@ -82,5 +104,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-tree.delete(0);
+tree.delete(3);
 prettyPrint(tree.root);
