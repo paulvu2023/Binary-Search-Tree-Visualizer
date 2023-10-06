@@ -50,17 +50,22 @@ class Tree {
 
     if (data < node.data) {
       node.left = this.delete(data, node.left);
+
       if (node.left.data == data && this.hasOneChild(node.left)) {
-        const tmpNode = node.left;
-        this.hasOneChild(node.left) = tmpNode;
-        node.left = null;
+        let childNode = this.hasOneChild(node.left);
+        node.left = childNode;
+        childNode = null;
       } else if (node.left.data == data) {
         node.left = null;
       }
     } else if (data > node.data) {
       node.right = this.delete(data, node.right);
 
-      if (node.right.data == data) {
+      if (node.right.data == data && this.hasOneChild(node.right)) {
+        let childNode = this.hasOneChild(node.right);
+        node.right = childNode;
+        childNode = null;
+      } else if (node.right.data == data) {
         node.right = null;
       }
     }
@@ -103,6 +108,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-tree.delete(3);
+const tree = new Tree([1, 2, 3, 4, 5]);
+tree.delete(4);
 prettyPrint(tree.root);
