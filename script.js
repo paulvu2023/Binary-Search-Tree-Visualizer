@@ -87,6 +87,29 @@ class Tree {
     return node;
   }
 
+  levelOrder(func = null) {
+    const queue = [];
+    const values = [];
+    queue.unshift(this.root);
+    while (queue.length > 0) {
+      if (func === null) {
+        values.push(queue[queue.length - 1]);
+      } else {
+        func(queue[queue.length - 1]);
+      }
+      if (queue[queue.length - 1].left) {
+        queue.unshift(queue[queue.length - 1].left);
+      }
+      if (queue[queue.length - 1].right) {
+        queue.unshift(queue[queue.length - 1].right);
+      }
+      queue.pop();
+    }
+    if (func === null) {
+      return values;
+    }
+  }
+
   find(data, node = this.root) {
     // Returns node if found, otherwise returns false
     if (node === null) {
@@ -154,6 +177,3 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6]);
-tree.delete(5);
-console.log(tree.find(3));
-prettyPrint(tree.root);
