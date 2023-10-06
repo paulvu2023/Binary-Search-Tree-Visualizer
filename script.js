@@ -87,6 +87,19 @@ class Tree {
     return node;
   }
 
+  find(data, node = this.root) {
+    // Returns node if found, otherwise returns false
+    if (node === null) {
+      return false;
+    } else if (data < node.data) {
+      return this.find(data, node.left);
+    } else if (data > node.data) {
+      return this.find(data, node.right);
+    } else if (data === node.data) {
+      return node;
+    }
+  }
+
   findSuccessorNode(node, isInitialCall = false) {
     if (isInitialCall) {
       return this.findSuccessorNode(node.right);
@@ -105,7 +118,7 @@ class Tree {
   }
 
   hasOneChild(node) {
-    // Returns 1 child if node ONLY has 1 child
+    // Returns child if node ONLY has 1 child
     let leftNode = false;
     let rightNode = false;
     if (node.left) {
@@ -141,5 +154,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6]);
-tree.delete(3);
+tree.delete(5);
+console.log(tree.find(3));
 prettyPrint(tree.root);
