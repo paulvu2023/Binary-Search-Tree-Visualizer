@@ -50,8 +50,9 @@ class Tree {
 
     if (data < node.data) {
       node.left = this.delete(data, node.left);
-
-      if (node.left.data == data && this.hasOneChild(node.left)) {
+      if (node.left.data == data && this.hasTwoChildren(node.left)) {
+        //
+      } else if (node.left.data == data && this.hasOneChild(node.left)) {
         let childNode = this.hasOneChild(node.left);
         node.left = childNode;
         childNode = null;
@@ -70,6 +71,10 @@ class Tree {
       }
     }
     return node;
+  }
+
+  hasTwoChildren(node) {
+    return node.left && node.right;
   }
 
   hasOneChild(node) {
@@ -108,6 +113,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-const tree = new Tree([1, 2, 3, 4, 5]);
+const tree = new Tree([1, 2, 3, 4, 5, 6]);
 tree.delete(4);
 prettyPrint(tree.root);
