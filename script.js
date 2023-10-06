@@ -87,6 +87,13 @@ class Tree {
     return node;
   }
 
+  preorder(node = this.root, func = null) {
+    if (node === null) return;
+    func(node);
+    this.preorder(node.left);
+    this.preorder(node.right);
+  }
+
   levelOrder(func = null) {
     const queue = [];
     const values = [];
