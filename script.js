@@ -87,11 +87,28 @@ class Tree {
     return node;
   }
 
-  preorder(node = this.root, func = null) {
-    if (node === null) return;
-    func(node);
+  preorder(node = this.root, func = null, values = []) {
+    if (node === null) return values;
+    if (func) {
+      func(node);
+    } else {
+      values.push(node.data);
+    }
     this.preorder(node.left);
     this.preorder(node.right);
+    return values;
+  }
+
+  inorder(node = this.root, func = null, values = []) {
+    if (node === null) return values;
+    this.inorder(node.left, func, values);
+    if (func) {
+      func(node);
+    } else {
+      values.push(node.data);
+    }
+    this.inorder(node.right, func, values);
+    return values;
   }
 
   levelOrder(func = null) {
