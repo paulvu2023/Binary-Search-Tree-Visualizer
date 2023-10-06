@@ -48,6 +48,13 @@ class Tree {
       return new Node(data);
     }
 
+    if (data === this.root.data) {
+      let successorNode = this.findSuccessorNode(this.root, true);
+      let successorNodeData = successorNode.data;
+      this.delete(successorNodeData, this.root);
+      this.root.data = successorNodeData;
+    }
+
     if (data < node.data) {
       node.left = this.delete(data, node.left);
 
@@ -90,6 +97,7 @@ class Tree {
     if (this.findSuccessorNode(node.left) === null) {
       return node;
     }
+    return this.findSuccessorNode(node.left);
   }
 
   hasTwoChildren(node) {
@@ -133,5 +141,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6]);
-tree.delete(5);
+tree.delete(3);
 prettyPrint(tree.root);
