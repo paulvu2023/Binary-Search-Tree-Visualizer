@@ -111,6 +111,18 @@ class Tree {
     return values;
   }
 
+  postorder(node = this.root, func = null, values = []) {
+    if (node === null) return values;
+    this.postorder(node.left, func, values);
+    this.postorder(node.right, func, values);
+    if (func) {
+      func(node);
+    } else {
+      values.push(node.data);
+    }
+    return values;
+  }
+
   levelOrder(func = null) {
     const queue = [];
     const values = [];
