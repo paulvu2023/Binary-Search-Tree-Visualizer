@@ -87,6 +87,22 @@ class Tree {
     return node;
   }
 
+  isBalanced(node = this.root) {
+    if (node === null) {
+      return true;
+    }
+    const leftTreeHeight = this.height(node.left);
+    const rightTreeHeight = this.height(node.right);
+    if (
+      Math.abs(leftTreeHeight - rightTreeHeight) <= 1 &&
+      this.isBalanced(node.left) &&
+      this.isBalanced(node.right)
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   depth(node, currentNode = this.root, currentDepth = 0) {
     if (currentNode === null) {
       return -1;
@@ -240,5 +256,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6]);
-const foundNode = tree.find(2);
-console.log(tree.depth(foundNode));
+console.log(tree.isBalanced());
