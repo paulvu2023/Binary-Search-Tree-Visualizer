@@ -87,6 +87,11 @@ class Tree {
     return node;
   }
 
+  rebalance() {
+    const values = this.inorder();
+    this.root = this.buildTree(values, true);
+  }
+
   isBalanced(node = this.root) {
     if (node === null) {
       return true;
