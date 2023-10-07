@@ -142,8 +142,8 @@ class Tree {
     } else {
       values.push(node.data);
     }
-    this.preorder(node.left);
-    this.preorder(node.right);
+    this.preorder(node.left, func, values);
+    this.preorder(node.right, func, values);
     return values;
   }
 
@@ -260,5 +260,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-const tree = new Tree([1, 2, 3, 4, 5, 6]);
+const tree = new Tree([1, 10, 54, 99, 25, 44, 57, 82, 13, 19, 48, 49]);
 console.log(tree.isBalanced());
+console.log(tree.preorder());
