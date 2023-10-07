@@ -87,6 +87,20 @@ class Tree {
     return node;
   }
 
+  depth(node, currentNode = this.root, currentDepth = 0) {
+    if (currentNode === null) {
+      return -1;
+    }
+    if (node.data === currentNode.data) {
+      return currentDepth;
+    }
+    if (node.data < currentNode.data) {
+      return this.depth(node, currentNode.left, currentDepth + 1);
+    }
+
+    return this.depth(node, currentNode.right, currentDepth + 1);
+  }
+
   height(node = this.root) {
     if (node == null) {
       return 0;
@@ -226,4 +240,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6]);
-console.log(tree.height(tree.find(3)));
+const foundNode = tree.find(2);
+console.log(tree.depth(foundNode));
