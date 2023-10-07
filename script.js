@@ -177,7 +177,7 @@ class Tree {
     queue.unshift(this.root);
     while (queue.length > 0) {
       if (func === null) {
-        values.push(queue[queue.length - 1]);
+        values.push(queue[queue.length - 1].data);
       } else {
         func(queue[queue.length - 1]);
       }
@@ -263,3 +263,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 const tree = new Tree([1, 10, 54, 99, 25, 44, 57, 82, 13, 19, 48, 49]);
 console.log(tree.isBalanced());
 console.log(tree.preorder());
+console.log(tree.postorder());
+console.log(tree.inorder());
+console.log(tree.levelOrder());
