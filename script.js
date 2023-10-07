@@ -87,6 +87,19 @@ class Tree {
     return node;
   }
 
+  height(node = this.root) {
+    if (node == null) {
+      return 0;
+    }
+    let left = this.height(node.left);
+    let right = this.height(node.right);
+    if (left > right) {
+      return left + 1;
+    } else {
+      return right + 1;
+    }
+  }
+
   preorder(node = this.root, func = null, values = []) {
     if (node === null) return values;
     if (func) {
@@ -213,3 +226,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const tree = new Tree([1, 2, 3, 4, 5, 6]);
+console.log(tree.height(tree.find(3)));
