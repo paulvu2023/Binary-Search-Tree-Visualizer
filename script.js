@@ -1,3 +1,17 @@
+const numbers = document.getElementById("numbers");
+const insert = document.getElementById("insert");
+const remove = document.getElementById("remove");
+const depth = document.getElementById("depth");
+const height = document.getElementById("height");
+const rebalance = document.getElementById("rebalance");
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+});
+
+numbers.addEventListener("keydown", () => {});
+
 class Node {
   constructor(data = null, left = null, right = null) {
     this.data = data;
