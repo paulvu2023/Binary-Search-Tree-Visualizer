@@ -5,12 +5,21 @@ const depth = document.getElementById("depth");
 const height = document.getElementById("height");
 const rebalance = document.getElementById("rebalance");
 const form = document.querySelector("form");
+let array = [];
+let tree = false;
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 });
 
-numbers.addEventListener("keydown", () => {});
+numbers.addEventListener("keyup", () => {
+  let numbersInput = numbers.value
+    .replace(/[^0-9\s]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  array = numbersInput.split(" ").map(Number);
+  tree = new Tree(array);
+});
 
 class Node {
   constructor(data = null, left = null, right = null) {
@@ -25,7 +34,7 @@ class Tree {
     array = this.removeDuplicates(array);
     array.sort((a, b) => a - b);
     this.root = this.buildTree(array, true);
-    prettyPrint(this.root);
+    displayTree(this.root);
   }
 
   buildTree(array) {
@@ -274,9 +283,9 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-const tree = new Tree([1, 10, 54, 99, 25, 44, 57, 82, 13, 19, 48, 49]);
-console.log(tree.isBalanced());
-console.log(tree.preorder());
-console.log(tree.postorder());
-console.log(tree.inorder());
-console.log(tree.levelOrder());
+// const tree = new Tree([1, 10, 54, 99, 25, 44, 57, 82, 13, 19, 48, 49]);
+// console.log(tree.isBalanced());
+// console.log(tree.preorder());
+// console.log(tree.postorder());
+// console.log(tree.inorder());
+// console.log(tree.levelOrder());
