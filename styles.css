@@ -21,9 +21,13 @@ h1 {
   grid-template-rows: 1fr 1fr;
 }
 
+.left {
+  margin-left: 15px;
+}
+
+/* Form Styling */
 form {
   border: 1px solid white;
-  margin-left: 15px;
   padding: 20px;
 }
 
@@ -49,4 +53,27 @@ button {
 .rebalance-container {
   display: flex;
   flex-direction: column;
+}
+
+/* Information Styling */
+.information {
+  display: flex;
+  border: 1px solid white;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+h4 {
+  margin-bottom: 20px;
+  text-align: center;
+  margin: 0px;
+}
+
+/* Tree Styling */
+.tree {
+  border: 1px solid white;
+  margin-left: 30px;
+  margin-right: 20px;
 }
