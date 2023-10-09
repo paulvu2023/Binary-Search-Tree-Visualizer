@@ -13,5 +13,19 @@ h1 {
 
 .container {
   display: grid;
+  grid-template-columns: 400px 1fr;
 }
 
+form {
+  padding: 20px;
+  background-color: green;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+form div {
+  display: flex;
+}

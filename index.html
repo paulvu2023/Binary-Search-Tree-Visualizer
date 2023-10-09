@@ -16,19 +16,37 @@
     <form>
       <label for="numbers">Enter numbers followed by spaces</label><br>
       <input type="text" id="numbers" name="numbers"><br>
-
+      
       <label for="insert">Insert Numbers:</label><br>
-      <input type="text" id="insert" name="insert"><br>
+      <div>
+        <input type="text" id="insert" name="insert"><br>
+        <button>Insert</button>
+      </div>
       
       <label for="remove">Remove Numbers:</label><br>
-      <input type="text" id="remove" name="remove"><br>
-      
-      <label for="depth">Calculate height of number:</label><br>
-      <input type="text" id="depth" name="depth"><br>
+      <div>
+        <input type="text" id="remove" name="remove"><br>
+        <button>Remove</button>
+      </div>
 
+      <label for="depth">Calculate height of number:</label><br>
+      <div>
+        <input type="text" id="depth" name="depth"><br>
+        <button>Find depth</button>
+      </div>
+      
       <label for="height">Calculate height of number:</label><br>
-      <input type="text" id="height" name="height"><br>
+      <div>
+        <input type="text" id="height" name="height"><br>
+        <button>Find height</button>
+      </div>
+
+      <div class="rebalance-container">
+        <label for="rebalance">Rebalance</label>
+        <button>Rebalance</button>
+      </div>
     </form>
+    
     <div class="display">
       <div class="tree"></div>
       <div class="information"></div>
