@@ -3,21 +3,32 @@
   color: white;
 }
 
-html {
+html, body {
+  height: 100%;
   background: rgb(24, 24, 24);
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .container {
   display: grid;
+  height: 100%;
+  width: 100%;
   grid-template-columns: 400px 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 form {
+  border: 1px solid white;
+  margin-left: 15px;
   padding: 20px;
+}
+
+#numbers {
+  width: 98%;
 }
 
 input {
