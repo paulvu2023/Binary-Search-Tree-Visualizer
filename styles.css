@@ -1,0 +1,17 @@
+* {
+  font-family: 'Source Code Pro','Times New Roman', Times, serif;
+  color: white;
+}
+
+html {
+  background: rgb(24, 24, 24);
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  display: grid;
+}
+
