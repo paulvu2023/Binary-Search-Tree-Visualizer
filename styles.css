@@ -28,4 +28,15 @@ input {
 
 form div {
   display: flex;
+  gap: 5px;
+}
+
+button {
+  color: black;
+  height: 23px;
+}
+
+.rebalance-container {
+  display: flex;
+  flex-direction: column;
 }
