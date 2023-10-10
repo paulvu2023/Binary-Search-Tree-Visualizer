@@ -1,8 +1,12 @@
 const numbers = document.getElementById("numbers");
 const insert = document.getElementById("insert");
+const insertButton = document.querySelector(".insert-button");
 const remove = document.getElementById("remove");
+const removeButton = document.querySelector(".remove-button");
 const depth = document.getElementById("depth");
+const depthButton = document.querySelector(".depth-button");
 const height = document.getElementById("height");
+const heightButton = document.querySelector(".height-button");
 const rebalance = document.getElementById("rebalance");
 const form = document.querySelector("form");
 let array = [];
@@ -21,23 +25,28 @@ numbers.addEventListener("keyup", () => {
   tree = new Tree(array);
 });
 
-insert.addEventListener("keyup", (event) => {
-  let insertArray = [];
+function processInsertInput() {
   if (tree) {
-    if (event.key === "Enter") {
-      let insertInput = insert.value
-        .replace(/[^0-9\s]+/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-      insertArray = insertInput.split(" ").map(Number);
-      insertInput.value = "";
-    }
+    let insertInput = insert.value
+      .replace(/[^0-9\s]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    let insertArray = insertInput.split(" ").map(Number);
+    insertInput.value = "";
     insertArray.forEach(function (number) {
       tree.insert(number);
     });
     prettyPrint(tree.root);
   }
+}
+
+insert.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    processInsertInput();
+  }
 });
+
+insertButton.addEventListener("click", processInsertInput);
 
 class Node {
   constructor(data = null, left = null, right = null) {
