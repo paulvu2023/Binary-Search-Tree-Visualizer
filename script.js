@@ -21,6 +21,24 @@ numbers.addEventListener("keyup", () => {
   tree = new Tree(array);
 });
 
+insert.addEventListener("keyup", (event) => {
+  let insertArray = [];
+  if (tree) {
+    if (event.key === "Enter") {
+      let insertInput = insert.value
+        .replace(/[^0-9\s]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      insertArray = insertInput.split(" ").map(Number);
+      insertInput.value = "";
+    }
+    insertArray.forEach(function (number) {
+      tree.insert(number);
+    });
+    prettyPrint(tree.root);
+  }
+});
+
 class Node {
   constructor(data = null, left = null, right = null) {
     this.data = data;
@@ -34,7 +52,7 @@ class Tree {
     array = this.removeDuplicates(array);
     array.sort((a, b) => a - b);
     this.root = this.buildTree(array, true);
-    displayTree(this.root);
+    prettyPrint(this.root);
   }
 
   buildTree(array) {
