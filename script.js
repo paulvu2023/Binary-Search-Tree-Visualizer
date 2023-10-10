@@ -27,27 +27,9 @@ numbers.addEventListener("keyup", () => {
 
 insertButton.addEventListener("click", processInsertInput);
 
-insert.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    processInsertInput();
-  }
-});
-
 deleteButton.addEventListener("click", processDeleteInput);
 
-deleteText.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    processDeleteInput();
-  }
-});
-
 depthButton.addEventListener("click", processDepthInput);
-
-depth.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    processDepthInput();
-  }
-});
 
 heightButton.addEventListener("click", processHeightInput);
 
@@ -62,6 +44,15 @@ function processHeightInput() {
     }
   }
   height.value = "";
+}
+
+rebalance.addEventListener("click", rebalanceTree);
+
+function rebalanceTree() {
+  if (tree) {
+    tree.rebalance();
+    prettyPrint(tree.root);
+  }
 }
 
 function processDepthInput() {
@@ -155,7 +146,7 @@ class Tree {
   }
 
   delete(data, node = this.root) {
-    if (node === null) {
+    if (node === null || node === undefined) {
       return new Node(data);
     }
 
@@ -255,13 +246,17 @@ class Tree {
 
   inorder(node = this.root, func = null, values = []) {
     if (node === null) return values;
-    this.inorder(node.left, func, values);
+
+    values = this.inorder(node.left, func, values);
+
     if (func) {
       func(node);
     } else {
       values.push(node.data);
     }
-    this.inorder(node.right, func, values);
+
+    values = this.inorder(node.right, func, values);
+
     return values;
   }
 
