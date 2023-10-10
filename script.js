@@ -25,6 +25,7 @@ numbers.addEventListener("keyup", () => {
   array = numbersInput.split(" ").map(Number);
   tree = new Tree(array);
   heightOutput.textContent = tree.height();
+  balanced.textContent = tree.isBalanced();
 });
 
 insertButton.addEventListener("click", processInsertInput);
