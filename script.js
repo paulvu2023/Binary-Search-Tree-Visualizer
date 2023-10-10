@@ -1,8 +1,8 @@
 const numbers = document.getElementById("numbers");
 const insert = document.getElementById("insert");
 const insertButton = document.querySelector(".insert-button");
-const remove = document.getElementById("remove");
-const removeButton = document.querySelector(".remove-button");
+const deleteText = document.getElementById("delete");
+const deleteButton = document.querySelector(".delete-button");
 const depth = document.getElementById("depth");
 const depthButton = document.querySelector(".depth-button");
 const height = document.getElementById("height");
@@ -25,21 +25,6 @@ numbers.addEventListener("keyup", () => {
   tree = new Tree(array);
 });
 
-function processInsertInput() {
-  if (tree) {
-    let insertInput = insert.value
-      .replace(/[^0-9\s]+/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-    let insertArray = insertInput.split(" ").map(Number);
-    insertInput.value = "";
-    insertArray.forEach(function (number) {
-      tree.insert(number);
-    });
-    prettyPrint(tree.root);
-  }
-}
-
 insert.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     processInsertInput();
@@ -47,6 +32,44 @@ insert.addEventListener("keyup", (event) => {
 });
 
 insertButton.addEventListener("click", processInsertInput);
+
+deleteButton.addEventListener("click", processDeleteInput);
+
+deleteText.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    processDeleteInput();
+  }
+});
+
+function processDeleteInput() {
+  if (tree) {
+    let deleteInput = deleteText.value
+      .replace(/[^0-9\s]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    let deleteArray = deleteInput.split(" ").map(Number);
+    deleteText.value = "";
+    deleteArray.forEach(function (number) {
+      tree.delete(number);
+    });
+    prettyPrint(tree.root);
+  }
+}
+
+function processInsertInput() {
+  if (tree) {
+    let insertInput = insert.value
+      .replace(/[^0-9\s]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    let insertArray = insertInput.split(" ").map(Number);
+    insert.value = "";
+    insertArray.forEach(function (number) {
+      tree.insert(number);
+    });
+    prettyPrint(tree.root);
+  }
+}
 
 class Node {
   constructor(data = null, left = null, right = null) {
