@@ -25,8 +25,8 @@ h1 {
   margin-left: 15px;
 }
 
-/* Form Styling */
-form {
+/* .form Styling */
+.form {
   border: 1px solid white;
   padding: 20px;
 }
@@ -41,7 +41,7 @@ input {
   color: black;
 }
 
-form div {
+.form div {
   display: flex;
   gap: 5px;
 }
