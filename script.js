@@ -51,12 +51,6 @@ depth.addEventListener("keyup", (event) => {
 
 heightButton.addEventListener("click", processHeightInput);
 
-height.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    processHeightInput();
-  }
-});
-
 function processHeightInput() {
   if (tree) {
     let heightInput = height.value
@@ -372,9 +366,9 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-// const tree = new Tree([1, 10, 54, 99, 25, 44, 57, 82, 13, 19, 48, 49]);
-// console.log(tree.isBalanced());
-// console.log(tree.preorder());
-// console.log(tree.postorder());
-// console.log(tree.inorder());
-// console.log(tree.levelOrder());
+// const treee = new Tree([1, 2, 3]);
+// console.log(treee.height(treee.find(2)));
+// console.log(treee.preorder());
+// console.log(treee.postorder());
+// console.log(treee.inorder());
+// console.log(treee.levelOrder());
