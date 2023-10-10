@@ -25,13 +25,13 @@ numbers.addEventListener("keyup", () => {
   tree = new Tree(array);
 });
 
+insertButton.addEventListener("click", processInsertInput);
+
 insert.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     processInsertInput();
   }
 });
-
-insertButton.addEventListener("click", processInsertInput);
 
 deleteButton.addEventListener("click", processDeleteInput);
 
@@ -40,6 +40,27 @@ deleteText.addEventListener("keyup", (event) => {
     processDeleteInput();
   }
 });
+
+depthButton.addEventListener("click", processDepthInput);
+
+depth.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    processDepthInput();
+  }
+});
+
+function processDepthInput() {
+  if (tree) {
+    let depthInput = depth.value
+      .replace(/[^0-9\s]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (tree.find(parseInt(depthInput))) {
+      console.log(tree.depth(tree.find(parseInt(depthInput))));
+    }
+  }
+  depth.value = "";
+}
 
 function processDeleteInput() {
   if (tree) {
@@ -112,6 +133,8 @@ class Tree {
       node.left = this.insert(data, node.left);
     } else if (data > node.data) {
       node.right = this.insert(data, node.right);
+    } else if (data === node.data) {
+      return false;
     }
     return node;
   }
@@ -191,13 +214,12 @@ class Tree {
     if (node.data < currentNode.data) {
       return this.depth(node, currentNode.left, currentDepth + 1);
     }
-
     return this.depth(node, currentNode.right, currentDepth + 1);
   }
 
   height(node = this.root) {
     if (node == null) {
-      return 0;
+      return -1;
     }
     let left = this.height(node.left);
     let right = this.height(node.right);
