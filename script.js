@@ -8,12 +8,12 @@ const depthButton = document.querySelector(".depth-button");
 const height = document.getElementById("height");
 const heightButton = document.querySelector(".height-button");
 const rebalance = document.getElementById("rebalance");
-const heightOutput = document.querySelector(".height");
-const balanced = document.querySelector(".balanced");
-const levelOrder = document.querySelector(".levelOrder");
-const preorder = document.querySelector(".preorder");
-const inorder = document.querySelector(".inorder");
-const postorder = document.querySelector(".postorder");
+const heightOutput = document.querySelector(".height span");
+const balanced = document.querySelector(".balanced span");
+const levelOrder = document.querySelector(".levelOrder span");
+const preorder = document.querySelector(".preorder span");
+const inorder = document.querySelector(".inorder span");
+const postorder = document.querySelector(".postorder span");
 let array = [];
 let tree = false;
 
@@ -24,6 +24,7 @@ numbers.addEventListener("keyup", () => {
     .trim();
   array = numbersInput.split(" ").map(Number);
   tree = new Tree(array);
+  heightOutput.textContent = tree.height();
 });
 
 insertButton.addEventListener("click", processInsertInput);
@@ -47,7 +48,6 @@ function processHeightInput() {
     }
   }
   height.value = "";
-  console.log("height");
 }
 
 function rebalanceTree() {
@@ -55,7 +55,6 @@ function rebalanceTree() {
     tree.rebalance();
     prettyPrint(tree.root);
   }
-  console.log("rebalance");
 }
 
 function processDepthInput() {
@@ -69,7 +68,6 @@ function processDepthInput() {
     }
   }
   depth.value = "";
-  console.log("depth");
 }
 
 function processDeleteInput() {
@@ -85,7 +83,6 @@ function processDeleteInput() {
     });
     prettyPrint(tree.root);
   }
-  console.log("delete");
 }
 
 function processInsertInput() {
@@ -101,7 +98,6 @@ function processInsertInput() {
     });
     prettyPrint(tree.root);
   }
-  console.log("insert");
 }
 
 class Node {
