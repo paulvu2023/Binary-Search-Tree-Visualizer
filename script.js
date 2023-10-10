@@ -49,6 +49,27 @@ depth.addEventListener("keyup", (event) => {
   }
 });
 
+heightButton.addEventListener("click", processHeightInput);
+
+height.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    processHeightInput();
+  }
+});
+
+function processHeightInput() {
+  if (tree) {
+    let heightInput = height.value
+      .replace(/[^0-9\s]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (tree.find(parseInt(heightInput))) {
+      console.log(tree.height(tree.find(parseInt(heightInput))));
+    }
+  }
+  height.value = "";
+}
+
 function processDepthInput() {
   if (tree) {
     let depthInput = depth.value
@@ -206,7 +227,7 @@ class Tree {
 
   depth(node, currentNode = this.root, currentDepth = 0) {
     if (currentNode === null) {
-      return -1;
+      return 0;
     }
     if (node.data === currentNode.data) {
       return currentDepth;
@@ -219,15 +240,11 @@ class Tree {
 
   height(node = this.root) {
     if (node == null) {
-      return -1;
+      return 0;
     }
-    let left = this.height(node.left);
-    let right = this.height(node.right);
-    if (left > right) {
-      return left + 1;
-    } else {
-      return right + 1;
-    }
+    let leftHeight = this.height(node.left);
+    let rightHeight = this.height(node.right);
+    return Math.max(leftHeight, rightHeight) + 1;
   }
 
   preorder(node = this.root, func = null, values = []) {
