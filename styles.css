@@ -6,11 +6,12 @@
 html, body {
   height: 100%;
   background: rgb(24, 24, 24);
+  overflow: hidden;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 20px;
 }
 
 .container {
@@ -18,7 +19,7 @@ h1 {
   height: 100%;
   width: 100%;
   grid-template-columns: 400px 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 350px;
 }
 
 .left {
@@ -27,6 +28,7 @@ h1 {
 
 /* .form Styling */
 .form {
+  height: 93.5%;
   border: 1px solid white;
   padding: 20px;
 }
@@ -37,6 +39,7 @@ h1 {
 
 input {
   width: 100%;
+  margin-top: 10px;
   margin-bottom: 10px;
   color: black;
 }
@@ -48,6 +51,7 @@ input {
 
 button {
   color: black;
+  margin-top: 10px;
   height: 23px;
 }
 
@@ -58,12 +62,14 @@ button {
 
 /* Information Styling */
 .information {
+  grid-column: 1 / 3;
   display: flex;
-  border: 1px solid white;
   flex-direction: column;
+  height: 165px;
+  border: 1px solid white;
   gap: 5px;
   padding: 20px;
-  margin-top: 30px;
+  margin: 30px 20px 30px 15px;
 }
 
 h4 {
