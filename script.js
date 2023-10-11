@@ -26,12 +26,7 @@ numbers.addEventListener("keyup", () => {
     .trim();
   array = numbersInput.split(" ").map(Number);
   tree = new Tree(array);
-  heightOutput.textContent = tree.height();
-  balanced.textContent = tree.isBalanced();
-  levelOrder.textContent = tree.levelOrder().join(" ");
-  preorder.textContent = tree.preorder().join(" ");
-  inorder.textContent = tree.inorder().join(" ");
-  postorder.textContent = tree.postorder().join(" ");
+  updateTreeInformation();
 });
 
 insertButton.addEventListener("click", processInsertInput);
@@ -49,6 +44,15 @@ function rebalanceTree() {
     tree.rebalance();
     prettyPrint(tree.root);
   }
+}
+
+function updateTreeInformation() {
+  heightOutput.textContent = tree.height();
+  balanced.textContent = tree.isBalanced();
+  levelOrder.textContent = tree.levelOrder().join(" ");
+  preorder.textContent = tree.preorder().join(" ");
+  inorder.textContent = tree.inorder().join(" ");
+  postorder.textContent = tree.postorder().join(" ");
 }
 
 function processHeightInput() {
@@ -89,6 +93,7 @@ function processDeleteInput() {
     deleteText.value = "";
     deleteArray.forEach(function (number) {
       tree.delete(number);
+      updateTreeInformation();
     });
     prettyPrint(tree.root);
   }
@@ -104,6 +109,7 @@ function processInsertInput() {
     insert.value = "";
     insertArray.forEach(function (number) {
       tree.insert(number);
+      updateTreeInformation();
     });
     prettyPrint(tree.root);
   }
