@@ -40,6 +40,13 @@ heightButton.addEventListener("click", processHeightInput);
 
 rebalance.addEventListener("click", rebalanceTree);
 
+function rebalanceTree() {
+  if (tree) {
+    tree.rebalance();
+    prettyPrint(tree.root);
+  }
+}
+
 function processHeightInput() {
   if (tree) {
     let heightInput = height.value
@@ -47,17 +54,12 @@ function processHeightInput() {
       .replace(/\s+/g, " ")
       .trim();
     if (tree.find(parseInt(heightInput))) {
-      console.log(tree.height(tree.find(parseInt(heightInput))));
+      findHeightOutput.textContent = tree.height(
+        tree.find(parseInt(heightInput))
+      );
     }
   }
   height.value = "";
-}
-
-function rebalanceTree() {
-  if (tree) {
-    tree.rebalance();
-    prettyPrint(tree.root);
-  }
 }
 
 function processDepthInput() {
