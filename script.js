@@ -31,6 +31,7 @@ numbers.addEventListener("keyup", () => {
   levelOrder.textContent = tree.levelOrder().join(" ");
   preorder.textContent = tree.preorder().join(" ");
   inorder.textContent = tree.inorder().join(" ");
+  postorder.textContent = tree.postorder().join(" ");
 });
 
 insertButton.addEventListener("click", processInsertInput);
