@@ -71,11 +71,13 @@ button {
   padding: 20px;
   margin: 30px 20px 30px 15px;
 }
-
 h4 {
-  margin-bottom: 20px;
+  margin: 0px 0px 2px 0px;
   text-align: center;
-  margin: 0px;
+}
+
+.form h4 {
+  margin: 0px 0px 10px 0px;
 }
 
 /* Tree Styling */

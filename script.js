@@ -5,10 +5,12 @@ const deleteText = document.getElementById("delete");
 const deleteButton = document.querySelector(".delete-button");
 const depth = document.getElementById("depth");
 const depthButton = document.querySelector(".depth-button");
+const depthOutput = document.getElementById("depth-output");
 const height = document.getElementById("height");
 const heightButton = document.querySelector(".height-button");
-const rebalance = document.getElementById("rebalance");
 const heightOutput = document.querySelector(".height span");
+const findHeightOutput = document.getElementById("height-output");
+const rebalance = document.getElementById("rebalance");
 const balanced = document.querySelector(".balanced span");
 const levelOrder = document.querySelector(".levelOrder span");
 const preorder = document.querySelector(".preorder span");
@@ -65,7 +67,7 @@ function processDepthInput() {
       .replace(/\s+/g, " ")
       .trim();
     if (tree.find(parseInt(depthInput))) {
-      console.log(tree.depth(tree.find(parseInt(depthInput))));
+      depthOutput.textContent = tree.depth(tree.find(parseInt(depthInput)));
     }
   }
   depth.value = "";
