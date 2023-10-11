@@ -30,6 +30,7 @@ numbers.addEventListener("keyup", () => {
   balanced.textContent = tree.isBalanced();
   levelOrder.textContent = tree.levelOrder().join(" ");
   preorder.textContent = tree.preorder().join(" ");
+  inorder.textContent = tree.inorder().join(" ");
 });
 
 insertButton.addEventListener("click", processInsertInput);
