@@ -12,7 +12,7 @@ const heightOutput = document.querySelector(".height span");
 const findHeightOutput = document.getElementById("height-output");
 const rebalance = document.getElementById("rebalance");
 const balanced = document.querySelector(".balanced span");
-const levelOrder = document.querySelector(".levelOrder span");
+const levelOrder = document.querySelector(".level-order span");
 const preorder = document.querySelector(".preorder span");
 const inorder = document.querySelector(".inorder span");
 const postorder = document.querySelector(".postorder span");
@@ -28,6 +28,8 @@ numbers.addEventListener("keyup", () => {
   tree = new Tree(array);
   heightOutput.textContent = tree.height();
   balanced.textContent = tree.isBalanced();
+  levelOrder.textContent = tree.levelOrder().join(" ");
+  preorder.textContent = tree.preorder().join(" ");
 });
 
 insertButton.addEventListener("click", processInsertInput);
