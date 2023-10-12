@@ -1,6 +1,6 @@
 # Binary Search Tree Visualizer
 Building a balanced Binary Search Tree
-![Screenshot from 2023-10-12 12-58-50](https://github.com/paulvu2023/Binary-Search-Tree/assets/118864214/25200a36-44b5-4909-97fb-b7a076c84354)
+![Screenshot from 2023-10-12 13-06-28](https://github.com/paulvu2023/Binary-Search-Tree-Visualizer/assets/118864214/4a187da4-f092-4e73-a5a8-d6958d2bda7f)
 ## Links
 - [Try Binary Search Tree Visualizer here](https://paulvu2023.github.io/Binary-Search-Tree-Visualizer/)
   
