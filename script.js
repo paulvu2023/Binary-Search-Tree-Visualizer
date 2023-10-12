@@ -43,6 +43,7 @@ function rebalanceTree() {
   if (tree) {
     tree.rebalance();
     prettyPrint(tree.root);
+    generateTreeHTML(tree.root);
   }
 }
 
@@ -96,6 +97,7 @@ function processDeleteInput() {
       updateTreeInformation();
     });
     prettyPrint(tree.root);
+    generateTreeHTML();
   }
 }
 
@@ -112,6 +114,7 @@ function processInsertInput() {
       updateTreeInformation();
     });
     prettyPrint(tree.root);
+    generateTreeHTML();
   }
 }
 
@@ -129,6 +132,7 @@ class Tree {
     array.sort((a, b) => a - b);
     this.root = this.buildTree(array, true);
     prettyPrint(this.root);
+    generateTreeHTML(this.root);
   }
 
   buildTree(array) {
@@ -378,9 +382,38 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-// const treee = new Tree([1, 2, 3]);
-// console.log(treee.height(treee.find(2)));
-// console.log(treee.preorder());
-// console.log(treee.postorder());
-// console.log(treee.inorder());
-// console.log(treee.levelOrder());
+function generateTreeHTML(
+  node,
+  prefix = "",
+  isLeft = true,
+  initialCall = true
+) {
+  // If it's the initial call, clear the existing content of the container
+  if (initialCall) {
+    const container = document.querySelector(".tree");
+    container.innerHTML = "";
+  }
+
+  if (node === null) return;
+
+  // Recursively generate visualizations for left and right children
+  const childPrefix = `${prefix}${
+    isLeft ? "│&nbsp;&nbsp;&nbsp;" : "&nbsp;&nbsp;&nbsp;&nbsp;"
+  }`;
+  if (node.right) {
+    generateTreeHTML(node.right, childPrefix, false, false); // Pass false for subsequent calls
+  }
+
+  // Create a new element to represent the node
+  const nodeElement = document.createElement("div");
+  nodeElement.classList.add("node");
+  nodeElement.innerHTML = `${prefix}${isLeft ? "└── " : "┌── "}${node.data}`;
+
+  // Append the node element to the container
+  const container = document.querySelector(".tree");
+  container.appendChild(nodeElement);
+
+  if (node.left) {
+    generateTreeHTML(node.left, childPrefix, true, false); // Pass false for subsequent calls
+  }
+}
