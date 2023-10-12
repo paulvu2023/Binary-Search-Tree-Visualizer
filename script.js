@@ -97,7 +97,7 @@ function processDeleteInput() {
       updateTreeInformation();
     });
     prettyPrint(tree.root);
-    generateTreeHTML();
+    generateTreeHTML(tree.root);
   }
 }
 
@@ -114,7 +114,7 @@ function processInsertInput() {
       updateTreeInformation();
     });
     prettyPrint(tree.root);
-    generateTreeHTML();
+    generateTreeHTML(tree.root);
   }
 }
 
@@ -213,6 +213,8 @@ class Tree {
   rebalance() {
     const values = this.inorder();
     this.root = this.buildTree(values, true);
+    prettyPrint(tree.root);
+    generateTreeHTML(tree.root);
   }
 
   isBalanced(node = this.root) {
@@ -383,7 +385,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 function generateTreeHTML(
-  node,
+  node = tree.root,
   prefix = "",
   isLeft = true,
   initialCall = true
