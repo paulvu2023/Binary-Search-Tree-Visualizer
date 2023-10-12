@@ -1,12 +1,12 @@
 # Binary Search Tree Visualizer
 Building a balanced Binary Search Tree
-![Screenshot from 2023-10-12 12-19-32](https://github.com/paulvu2023/Binary-Search-Tree/assets/118864214/d09ec47b-380c-45f0-a7a5-483c0254c764)
+![Screenshot from 2023-10-12 12-58-50](https://github.com/paulvu2023/Binary-Search-Tree/assets/118864214/25200a36-44b5-4909-97fb-b7a076c84354)
 ## Links
 - [Try Binary Search Tree Visualizer here](https://github.com/paulvu2023/Binary-Search-Tree-Visualizer)
   
 ## Features
 
-AchieveFlow allows you to:
+BST Visualizer allows you to:
 
 - **Create Binary Search Trees**: Simply type in numbers with spaces in between.
   
@@ -22,4 +22,4 @@ AchieveFlow allows you to:
   
 - **Rebalance Tree**: One-click tree rebalancing.
 
-This project challenged me to explore the difficulties of using recursion and led me to a much deeper understanding of both Binary Search Trees and recursion.
+This project challenged me to explore the difficulties of using recursion and led me to a much deeper understanding of both Binary Search Trees and recursion. At the beginning of the project, it took me a ton of effort and time to solve simple recursion problems, but towards the end, I learned to write recursive functions intuitively.
