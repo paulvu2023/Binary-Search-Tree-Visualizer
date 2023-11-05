@@ -18,7 +18,7 @@ BST Visualizer allows you to:
   
 - **Tree Insights**: Discover Tree information at a glance.
   
-- **Node Insights**: Calculate any nodes' height or depth.
+- **Node Insights**: Calculate any node's height or depth.
   
 - **Rebalance Tree**: One-click tree rebalancing.
 
